@@ -207,7 +207,7 @@ if [ ! -d server ] ; then
         DEFAULT_RUNNER_JAR=server/jetty-runner.jar
         echo "vendored:$JETTY_RUNNER_VERSION" > server/jettyVersion
     else
-        WEBAPP_RUNNER_VERSION=7.0.40
+        WEBAPP_RUNNER_VERSION=7.0.57.2
         echo "-----> No server directory found. Adding webapp-runner $WEBAPP_RUNNER_VERSION automatically."
         DEFAULT_RUNNER_JAR=server/webapp-runner.jar
         cp target/webapp-runner-$WEBAPP_RUNNER_VERSION.jar $DEFAULT_RUNNER_JAR
