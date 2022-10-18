@@ -57,19 +57,19 @@ https://devcenter.heroku.com/articles/deploying-gradle-apps-on-heroku"
 install_grails()
 {
   VER_TO_INSTALL=$1
-  GRAILS_URL="http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/grails-$VER_TO_INSTALL.zip"
-  GRAILS_ALT_URL="https://github.com/grails/grails-core/releases/download/v${VER_TO_INSTALL}/grails-${VER_TO_INSTALL}.zip"
+  #GRAILS_URL="http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/grails-$VER_TO_INSTALL.zip"
+  GRAILS_URL="https://github.com/grails/grails-core/releases/download/v${VER_TO_INSTALL}/grails-${VER_TO_INSTALL}.zip"
 
   validate_grails_version $VER_TO_INSTALL
 
   GRAILS_ZIP_FILE="grails-heroku.zip"
   echo "-----> Installing Grails $VER_TO_INSTALL....."
 
-  status=$(curl --retry 3 --silent --head -w %{http_code} -L ${GRAILS_ALT_URL} -o /dev/null)
+  status=$(curl --retry 3 --silent --head -w %{http_code} -L ${GRAILS_URL} -o /dev/null)
   #if [ "$status" != "200" ]; then
   #  GRAILS_URL=${GRAILS_ALT_URL}
   #fi
-  curl --retry 3 --silent --max-time 150 --location $GRAILS_ALT_URL -o $GRAILS_ZIP_FILE
+  curl --retry 3 --silent --max-time 150 --location $GRAILS_URL -o $GRAILS_ZIP_FILE
 
   # Error checking
   if [ ! -f $GRAILS_ZIP_FILE ]; then
